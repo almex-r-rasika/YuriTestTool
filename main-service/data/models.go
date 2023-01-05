@@ -39,7 +39,7 @@ type Messages struct {
 type SendMessage struct {
   MessageId string
   SendTime   string
-  SenderUserId   string
+  SendUserId   string
   Address string
   Subject string
   Line1 string
