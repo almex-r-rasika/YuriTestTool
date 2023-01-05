@@ -136,6 +136,19 @@ func GetMessages() ([]Messages){
 	return messages
 }
 
+/* Save send messages to the database
+    @param --> messageId string,sendTime string,sendUserId string,address string,subject string,line1 string,line2 string,line3 string,line4 string,line5 string,line6 string,line7 string,line8 string,line9 string,line10 string,postTime time.Time, result string
+    @param value --> MessageId,SendTime,SendUserId,Address,Subject,Line1,Line2,Line3,Line4,Line5,Line6,Line7,Line8,Line9,Line10,PostTime,Result
+    description --> save send messages to the database
+    @return --> null
+*/
+func SaveSendMessages(messageId string,sendTime string,sendUserId string,address string,subject string,line1 string,line2 string,line3 string,line4 string,line5 string,line6 string,line7 string,line8 string,line9 string,line10 string,postTime time.Time, result string) {
+
+	connectToDatabase()
+	db.Create(&SendMessage{MessageId: messageId, SendTime: sendTime, SendUserId: sendUserId, Address: address, Subject: subject, Line1: line1, Line2: line2, Line3: line3, Line4: line4, Line5: line5, Line6: line6, Line7: line7, Line8: line8, Line9: line9, Line10: line10, PostTime: postTime, Result: result})
+	Log.Info("saved send messages to the database")
+}
+
 
 
 
