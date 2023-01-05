@@ -27,12 +27,12 @@ type Message struct {
 var count int
 
 /* function for send message to the given destination 
-   @param --> subject, line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, loginId, patientList[], sendTime, token, count
-   @param value --> subject, line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, loginId, patientList[], sendTime, token, count
+   @param --> messageId, sendTime, sendUserId, address, subject, line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, patientList[], token, count
+   @param value --> messageId, sendTime, sendUserId, address, subject, line1, line2, line3, line4, line5, line6, line7, line8, line9, line10, patientList[], token, count
    description --> for each message when the send time comes message will send to the destination
    @return --> Message Object
 */
-func DoMessage(subject string,line1 string,line2 string,line3 string,line4 string,line5 string,line6 string,line7 string,line8 string,line9 string, line10 string,loginId string, patientList []string,sendTime string, token string, count int) Message{
+func DoMessage(messageId string,sendTime string,sendUserId string,address string,subject string,line1 string,line2 string,line3 string,line4 string,line5 string,line6 string,line7 string,line8 string,line9 string,line10 string,patientList []string, token string, count int) Message{
 
 	var patients = patientList
 	subject = "[yuri-test] "+time.Now().Format("15:04:05")+" "+strconv.Itoa(count)+" "+subject
@@ -95,7 +95,7 @@ func DoMessage(subject string,line1 string,line2 string,line3 string,line4 strin
 
    // validate the response
    if(message.Error == "0"){
-	Log.Info("user "+loginId+" sent message at "+sendTime)
+	Log.Info("user "+sendUserId+" sent message at "+sendTime)
    }else{
     Log.Error("error "+message.Error+" errorcode "+message.ErrorCode+" errorstring "+message.ErrorString)
    }
@@ -115,7 +115,7 @@ func AutoMessage(messages []Messages){
 		logged_users := GetLoggedUsers()
 		token := logged_users[message.SendUserId]
 		patient := GetPatientList(message.Address, token)
-	    DoMessage(message.Subject,message.Line1,message.Line2,message.Line3,message.Line4,message.Line5,message.Line6,message.Line7,message.Line8,message.Line9,message.Line10,message.SendUserId,patient,message.SendTime,token,count)
+	    DoMessage(message.MessageId,message.SendTime,message.SendUserId,message.Address,message.Subject,message.Line1,message.Line2,message.Line3,message.Line4,message.Line5,message.Line6,message.Line7,message.Line8,message.Line9,message.Line10,patient,token,count)
 	}
 
 	Log.Info("all messages have sent")
