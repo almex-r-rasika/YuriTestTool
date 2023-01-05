@@ -99,6 +99,10 @@ func DoMessage(messageId string,sendTime string,sendUserId string,address string
    }else{
     Log.Error("error "+message.Error+" errorcode "+message.ErrorCode+" errorstring "+message.ErrorString)
    }
+
+   // save send messages to the database
+   SaveSendMessages(messageId,sendTime,sendUserId,address,subject,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,time.Now(),message.Error)
+   
    return message
 }
 
