@@ -58,6 +58,7 @@ type SendMessage struct {
 
 var loginUser []LoginUser
 var messages []Messages
+var sendMessage []SendMessage
 
 /* function for make a connection to the database
     @param --> null
@@ -147,6 +148,19 @@ func SaveSendMessages(messageId string,sendTime string,sendUserId string,address
 	connectToDatabase()
 	db.Create(&SendMessage{MessageId: messageId, SendTime: sendTime, SendUserId: sendUserId, Address: address, Subject: subject, Line1: line1, Line2: line2, Line3: line3, Line4: line4, Line5: line5, Line6: line6, Line7: line7, Line8: line8, Line9: line9, Line10: line10, PostTime: postTime, Result: result})
 	Log.Info("saved send messages to the database")
+}
+
+/* function for get send message object from messages table
+    @param --> null
+    @param value --> null
+    description --> get all send message objects from message table
+    @return --> send message objects array
+*/
+func GetSendMessages() ([]SendMessage){
+
+	db.Order("post_time").Find(&sendMessage)	
+	Log.Info("get send message objects from the database")
+	return sendMessage
 }
 
 
