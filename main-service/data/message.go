@@ -35,7 +35,7 @@ var count int
 func DoMessage(subject string,line1 string,line2 string,line3 string,line4 string,line5 string,line6 string,line7 string,line8 string,line9 string, line10 string,loginId string, patientList []string,sendTime string, token string, count int) Message{
 
 	var patients = patientList
-	subject = "[yuri-test] "+time.Now().Format("hh:mm:ss ")+strconv.Itoa(count)+" "+subject
+	subject = "[yuri-test] "+time.Now().Format("15:04:05")+" "+strconv.Itoa(count)+" "+subject
 
 	jsonbody := getMessageBody(line1, line2, line3, line4, line5, line6, line7, line8, line9, line10)
 
