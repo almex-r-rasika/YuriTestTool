@@ -99,6 +99,7 @@ func AutoLogout(logout_users []LoginUser){
 	}
 
 	Log.Info("all users have finished logout")
+    Wg.Done()
 }
 
 
