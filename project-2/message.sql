@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS messages;
 
 CREATE TABLE messages
-(msg_id TEXT NOT NULL,
+(message_id TEXT NOT NULL,
  send_time TEXT NOT NULL,
  send_user_id TEXT NOT NULL,
  address TEXT NOT NULL,
