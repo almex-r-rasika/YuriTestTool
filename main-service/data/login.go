@@ -6,8 +6,11 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"sync"
 	"time"
 )
+
+var Wg = sync.WaitGroup{}
 
 type LoginRequestBody struct {
     ID string `json:"id"`
@@ -108,6 +111,7 @@ func AutoLogin(login_users []LoginUser){
 		DoLogin(user.UserId,user.Password,user.LoginTime)
 	}
 	Log.Info("all users have finished login")
+    Wg.Done()
 }
 
 /* function for get already logged users map
