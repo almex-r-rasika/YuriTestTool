@@ -28,11 +28,22 @@ func mainService(){
 	logout_users := data.GetUsers("logout")
 	messages := data.GetMessages()
 
-	wait.Add(2)
+	data.Wg.Add(3)
 	go data.AutoLogin(login_users)
 	time.Sleep(time.Duration(10000 * time.Millisecond))
-	go data.AutoLogout(logout_users)
-	time.Sleep(time.Duration(10000 * time.Millisecond))
 	go data.AutoMessage(messages)
-	wait.Wait()
+	time.Sleep(time.Duration(10000 * time.Millisecond))
+	go data.AutoLogout(logout_users)
+	data.Wg.Wait()
+}
+
+/* function for run generate csv log for send messages
+   @param --> null
+   @param value --> null
+   description --> function for generate csv log for send messages
+   @return --> null
+*/
+func logService(){
+	msgList := getSendMessageJsonList()
+	saveSendMessageCSV(msgList)
 }
