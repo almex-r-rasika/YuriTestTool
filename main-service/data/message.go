@@ -101,8 +101,8 @@ func DoMessage(messageId string,sendTime string,sendUserId string,address string
    }
 
    // save send messages to the database
-   SaveSendMessages(messageId,sendTime,sendUserId,address,subject,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,time.Now(),message.Error)
-   
+   SaveSendMessage(messageId,sendTime,sendUserId,address,subject,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10,time.Now(),message.Error)
+
    return message
 }
 
@@ -121,8 +121,8 @@ func AutoMessage(messages []Messages){
 		patient := GetPatientList(message.Address, token)
 	    DoMessage(message.MessageId,message.SendTime,message.SendUserId,message.Address,message.Subject,message.Line1,message.Line2,message.Line3,message.Line4,message.Line5,message.Line6,message.Line7,message.Line8,message.Line9,message.Line10,patient,token,count)
 	}
-
 	Log.Info("all messages have sent")
+	Wg.Done()
 }
 
 /* function for create message body for a message
