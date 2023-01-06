@@ -4,23 +4,22 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"sync"
 )
 
 const webPort = "3030"
 
 type MyJob struct {}
-var wait sync.WaitGroup
 
 func main() {
-
-	log.Println("Start test tool")
     
 	// to save initial objects to the db
 	initializeService()
     
 	// to run auto login/auto logout/auto message functions as go routines
 	mainService()
+
+    // to generate csv log report for send messages
+	logService()
 
 	// define http server
 	srv := &http.Server{
@@ -32,6 +31,5 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-	
 }
 
