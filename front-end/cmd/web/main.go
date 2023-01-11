@@ -32,10 +32,6 @@ func render(w http.ResponseWriter, t string) {
 
 	templateSlice = append(templateSlice, partials...)
 
-	//for _, x := range partials {
-		//templateSlice = append(templateSlice, x)
-	//}
-
 	tmpl, err := template.ParseFiles(templateSlice...)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
