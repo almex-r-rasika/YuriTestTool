@@ -1,4 +1,5 @@
 SHELL=cmd.exe
+FRONT_END_BINARY=frontApp.exe
 MAIN_BINARY=mainApp
 
 ## up: starts all containers in the background without forcing build
@@ -26,3 +27,20 @@ build_main:
 	@echo Building main binary...
 	chdir ..\main-service && set GOOS=linux&& set GOARCH=amd64&& set CGO_ENABLED=0 && go build -o ${MAIN_BINARY} ./cmd/api
 	@echo Done!
+
+## build_front: builds the frone end binary
+build_front:
+	@echo Building front end binary...
+	chdir ..\front-end && set CGO_ENABLED=0&& set GOOS=windows&& go build -o ${FRONT_END_BINARY} ./cmd/web
+	@echo Done!
+
+## start: starts the front end
+start: build_front
+	@echo Starting front end
+	chdir ..\front-end && start /B ${FRONT_END_BINARY} &
+
+## stop: stop the front end
+stop:
+	@echo Stopping front end...
+	@taskkill /IM "${FRONT_END_BINARY}" /F
+	@echo "Stopped front end!"
