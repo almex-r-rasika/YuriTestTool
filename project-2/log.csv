@@ -1,7 +1,0 @@
-MessageId,SendTime,SendUserId,Address,Subject,Line1,Line2,Line3,Line4,Line5,Line6,Line7,Line8,Line9,Line10,PostTime,Result
-,2022-12-27T19:02:10+09:00,install_01,"0000001234,本人",[yuri-test] 07:05:09 1 case1,あ,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 7, 5, 10, 43000000, time.Local)",0
-,2022-12-27T19:02:10+09:00,install_02,"0000001234,本人",[yuri-test] 07:05:10 2 case2,複数同時,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 7, 5, 10, 426000000, time.Local)",0
-,2022-12-27T19:02:10+09:00,install_01,"0000001234,本人",[yuri-test] 07:05:10 3 case3,あ,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 7, 5, 10, 829000000, time.Local)",0
-1,2022-12-27T19:02:10+09:00,install_01,"0000001234,本人",case1,あ,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 8, 37, 13, 91000000, time.Local)",0
-2,2022-12-27T19:02:10+09:00,install_02,"0000001234,本人",case2,複数同時,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 8, 37, 13, 93000000, time.Local)",0
-3,2022-12-27T19:02:10+09:00,install_01,"0000001234,本人",case3,あ,い,う,え,お,か,き,く,け,こ,"time.Date(2023, time.January, 6, 8, 37, 13, 95000000, time.Local)",0
