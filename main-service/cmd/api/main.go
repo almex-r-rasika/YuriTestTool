@@ -8,9 +8,11 @@ import (
 
 const webPort = "4040"
 
-type MyJob struct {}
+type Config struct {}
 
 func main() {
+
+	app := Config{}
     
 	// to save initial objects to the db
 	initializeService()
@@ -24,6 +26,7 @@ func main() {
 	// define http server
 	srv := &http.Server{
 		Addr: fmt.Sprintf(":%s", webPort),
+		Handler: app.routes(),
 	}
 
 	// start the server
