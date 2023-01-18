@@ -6,8 +6,6 @@
             <div class="col">
                 <h1 class="mt-5">Send message Log</h1>
                 <hr>
-                <a id="logBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Get Log</a>
-
                 <div id="output" class="mt-5" style="outline: 1px solid silver; padding: 2em;">
                     <span class="text-muted">Output shows here...</span>
                 </div>
@@ -26,11 +24,10 @@
 
 {{define "js"}}
     <script>
-    let logBtn = document.getElementById("logBtn");
     let output = document.getElementById("output");
     let recevied = document.getElementById("received");
 
-    logBtn.addEventListener("click", function() {
+    function welcomeFunc() {
 
         const body = {
             method: 'GET',
@@ -86,7 +83,7 @@
         .catch((error) => {
             output.innerHTML += "<br><br>Error: " + error;
         })
-    })
+    }
         
     </script>
 {{end}}
