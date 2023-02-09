@@ -26,12 +26,12 @@ func initializeService() {
 func mainService(){
 	login_users := data.GetUsers("login")
 	logout_users := data.GetUsers("logout")
-	messages := data.GetMessages()
+	//messages := data.GetMessages()
 
 	data.Wg.Add(3)
 	go data.AutoLogin(login_users)
 	time.Sleep(time.Duration(10000 * time.Millisecond))
-	go data.AutoMessage(messages)
+	//go data.AutoMessage(messages)
 	time.Sleep(time.Duration(10000 * time.Millisecond))
 	go data.AutoLogout(logout_users)
 	data.Wg.Wait()

@@ -12,6 +12,10 @@ func main() {
 		render(w, "home.page.gohtml")
 	})
 
+	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
+		render(w, "login.page.gohtml")
+	})
+
 	fmt.Println("Starting front end service on port 4040")
 	err := http.ListenAndServe(":4040", nil)
 	if err != nil {

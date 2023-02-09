@@ -6,7 +6,14 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	"github.com/gorilla/sessions"
 )
+
+// dummy user data
+var users = map[string]string{"user1": "password", "user2": "password"}
+// creating a cookie session store
+var store = sessions.NewCookieStore([]byte("secret_key"))
+
 
 func (app *Config) routes() http.Handler {
 	mux := chi.NewRouter()
@@ -22,8 +29,10 @@ func (app *Config) routes() http.Handler {
 	}))
 
 	mux.Use(middleware.Heartbeat("/ping"))
-
 	mux.Get("/", app.getMessageLog)
+	mux.Post("/login", app.loginHandler)
+	mux.Get("/logout", app.logoutHandler)
+	mux.Get("/healthcheck", app.healthcheck)
 
 	return mux
 }
